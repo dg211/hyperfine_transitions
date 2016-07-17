@@ -13,17 +13,13 @@
 
   <body>
     <script>
-      var deadline = '2015-12-31';
-      
-      function getTimeRemaining(endtime)
-      {
+      function getTimeRemaining(endtime) {
         var t = Date.parse(endtime) - Date.parse(new Date());
-        var seconds = Math.floor( (t/1000) % 60 );
-        var minutes = Math.floor( (t/1000/60) % 60 );
-        var hours = Math.floor( (t/(1000*60*60)) % 24 );
-        var days = Math.floor( t/(1000*60*60*24) );
-        return 
-        {
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
           'total': t,
           'days': days,
           'hours': hours,
@@ -31,49 +27,54 @@
           'seconds': seconds
         };
       }
-      
-      function initializeClock(id, endtime)
-      {
+
+      function initializeClock(id, endtime) {
         var clock = document.getElementById(id);
-        
         var daysSpan = clock.querySelector('.days');
         var hoursSpan = clock.querySelector('.hours');
         var minutesSpan = clock.querySelector('.minutes');
         var secondsSpan = clock.querySelector('.seconds');
 
-        var timeinterval = setInterval(function()
-        {
+        function updateClock() {
           var t = getTimeRemaining(endtime);
-          clock.innerHTML = 'days: ' + t.days + '<br>' +
-                            'hours: '+ t.hours + '<br>' +
-                            'minutes: ' + t.minutes + '<br>' +
-                            'seconds: ' + t.seconds;
-          if(t.total<=0)
-          {
+
+          daysSpan.innerHTML = t.days;
+          hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+          minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+          secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+          if (t.total <= 0) {
             clearInterval(timeinterval);
           }
-        }, 1000);
-      }
-      
-      function updateClock()
-      {
-        var t = getTimeRemaining(endtime);
+        }
 
-        daysSpan.innerHTML = t.days;
-        hoursSpan.innerHTML = t.hours;
-        minutesSpan.innerHTML = t.minutes;
-        secondsSpan.innerHTML = t.seconds;
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
       }
-      
+
+      var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
       initializeClock('clockdiv', deadline);
 
-      <div id="clockdiv">
-        Days: <span class="days"></span><br>
-        Hours: <span class="hours"></span><br>
-        Minutes: <span class="minutes"></span><br>
-        Seconds: <span class="seconds"></span>
-      </div>
-
     </script>
+    
+    <h1>Countdown Clock</h1>
+    <div id="clockdiv">
+      <div>
+        <span class="days"></span>
+        <div class="smalltext">Days</div>
+      </div>
+      <div>
+        <span class="hours"></span>
+        <div class="smalltext">Hours</div>
+      </div>
+      <div>
+        <span class="minutes"></span>
+        <div class="smalltext">Minutes</div>
+      </div>
+      <div>
+        <span class="seconds"></span>
+        <div class="smalltext">Seconds</div>
+      </div>
+    </div>
   </body>
 </html>
