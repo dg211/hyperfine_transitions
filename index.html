@@ -16,22 +16,22 @@
   <p id="hft"></p>
   
     <script>
-      var myVar = setInterval(myTimer, 16);
-
-      function getHFT()
+      //var myVar = setInterval(myTimer, 16);
+      
+      function getHFT(timestamp)
       {
         var startTime = 'May 18 1982 08:05:00 GMT+0000';
         var hftPerSecond = 9192631770;
-        var timeElapsed = Date.parse(new Date()) - Date.parse(startTime);
+        var timeElapsed = timestamp - Date.parse(startTime);
         var hft = timeElapsed * hftPerSecond / 1000;
         return hft;
       }
       
-      function myTimer() {
-        var d = new Date();
-        document.getElementById("hft").innerHTML = getHFT();
+      function myTimer(timestamp) {
+        document.getElementById("hft").innerHTML = getHFT(timestamp);
       }
 
+      window.requestAnimationFrame(myTimer);
     </script>
     
 
