@@ -36,7 +36,7 @@
       }
       
       function myTimer(timestamp) {
-        document.getElementById("hft").innerHTML = ('0' + getHFT(timestamp)).slice(-20).slice(6);
+        document.getElementById("hft").innerHTML = ('0' + getHFT(timestamp)).slice(-20);
         window.requestAnimationFrame(myTimer);
       }
 
