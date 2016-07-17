@@ -29,6 +29,7 @@
       
       function myTimer(timestamp) {
         document.getElementById("hft").innerHTML = getHFT(timestamp);
+        window.requestAnimationFrame(myTimer);
       }
 
       window.requestAnimationFrame(myTimer);
