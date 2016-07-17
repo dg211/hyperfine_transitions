@@ -36,7 +36,7 @@
       }
       
       function myTimer(timestamp) {
-        document.getElementById("hft").innerHTML = getHFT(timestamp);
+        document.getElementById("hft").innerHTML = ('0' + getHFT(timestamp)).slice(-20).slice(6) + ('000000' + math.floor(math.random() * 1000000)).slice(-6);
         window.requestAnimationFrame(myTimer);
       }
 
