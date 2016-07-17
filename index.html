@@ -39,6 +39,12 @@
         function initializeClock(id, endtime)
         {
           var clock = document.getElementById(id);
+          
+          var daysSpan = clock.querySelector('.days');
+          var hoursSpan = clock.querySelector('.hours');
+          var minutesSpan = clock.querySelector('.minutes');
+          var secondsSpan = clock.querySelector('.seconds');
+
           var timeinterval = setInterval(function()
           {
             var t = getTimeRemaining(endtime);
@@ -53,10 +59,26 @@
           }, 1000);
         }
         
-        initializeClock('clockdiv', deadline);
+        function updateClock()
+        {
+          var t = getTimeRemaining(endtime);
 
+          daysSpan.innerHTML = t.days;
+          hoursSpan.innerHTML = t.hours;
+          minutesSpan.innerHTML = t.minutes;
+          secondsSpan.innerHTML = t.seconds;
+        }
+        
+        initializeClock('clockdiv', deadline);
       
       </script>
+      
+      <div id="clockdiv">
+        Days: <span class="days"></span><br>
+        Hours: <span class="hours"></span><br>
+        Minutes: <span class="minutes"></span><br>
+        Seconds: <span class="seconds"></span>
+      </div>
 	
     </div>
 
