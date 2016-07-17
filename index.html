@@ -33,7 +33,7 @@
         timeElapsed = timeElapsed + (timestamp - start) / 1000;
         var hft = (timeElapsed * hftPerSecond) / 1000;
         //return timestamp;
-        return ('0' + hft).slice(-20, -6);
+        return ('0' + hft).slice(-20, -6) + ('000000' + Math.floor(Math.random() * 1000000)).slice(-6);
       }
       
       function myTimer(timestamp) {
