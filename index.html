@@ -31,7 +31,7 @@
       
         var hftPerSecond = 9192631770;
         timeElapsed = timeElapsed + timestamp - start;
-        var hft = timeElapsed * hftPerSecond / 1000;
+        var hft = (timeElapsed * hftPerSecond) / 1000;
         return hft;
       }
       
