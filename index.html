@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<body onresize="bodyResize()">
 
   <head>
     <meta charset='utf-8'>
@@ -8,36 +7,34 @@
     <meta name="description" content="Hyperfine Transitions : ">
 
     <style>
-      body {
-          background: #212121 }
-      section {
-          color: #777777;
-          font-size: 8vw;
-          font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
-          border-radius: 1em;
-          padding: 1em;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          margin-right: -50%;
-          transform: translate(-50%, -50%) }
+      body 
+      {
+        background: #212121 
+      }
+      section 
+      {
+        color: #777777;
+        font-size: 8vw;
+        font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+        border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) 
+      }
     </style>
     
-
     <title>Hyperfine transitions</title>
   </head>
 
   <body>
-
-  
-    <section>    
+   <section>    
       <p id="hft"></p>
-      
-      
     </section>
   
     <script>
-      //var myVar = setInterval(myTimer, 16);
       var start = null;
       var timeElapsed = null;
       var startTime = 'May 18 1982 08:05:00 GMT+0000';
@@ -53,26 +50,16 @@
       
         var hftPerSecond = 9192631770;
         var hft = (timeElapsed + timestamp - start) * hftPerSecond / 1000;
-        //return timestamp;
-        var retVal = ('0' + hft).slice(-20, -6) + ('000000' + Math.floor(Math.random() * 1000000)).slice(-6);
-        return retVal;
+        return ('0' + hft).slice(-20, -6) + ('000000' + Math.floor(Math.random() * 1000000)).slice(-6);
       }
       
       function myTimer(timestamp) {
         document.getElementById("hft").innerHTML = getHFT(timestamp)
-        //document.getElementById("hft").innerHTML += ('000000' + Math.floor(Math.random() * 1000000)).slice(-6);
         window.requestAnimationFrame(myTimer);
       }
 
       window.requestAnimationFrame(myTimer);
       
-      function bodyResize()
-      {
-        //fontSize = fontSize + 1;
-        //document.getElementById("hft").style.fontSize = '1vw';
-      }
     </script>
-    
-
   </body>
 </html>
